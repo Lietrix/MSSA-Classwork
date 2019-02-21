@@ -12,10 +12,9 @@ namespace Classwork
         {
             Console.WriteLine(Reverse("happy"));
 
-
             string str = "This is a test";
             str = str.Replace(" ", String.Empty);
-            Console.WriteLine(str); 
+            Console.WriteLine(str);
         }
 
         public static string Reverse(string input)
