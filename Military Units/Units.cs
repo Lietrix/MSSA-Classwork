@@ -12,7 +12,9 @@ using System.Threading.Tasks;
 //-----------------------------------------------------------------
 
 //----------------------------Second Part--------------------------
-//implement the appropriate subclasses. 
+//If you chose to implement Option 1 in the first part, implement 
+//Option 2 in in this part.If you chose to implement Option 2 in the
+//first part, in this part, implement the appropriate subclasses. 
 //For example, if one of your parent classes is Weapon, in this
 //class you may elect to implement SmallCaliberWeapon,
 //IndirectFireWeapon, and DirectFireWeapon.
@@ -45,52 +47,77 @@ using System.Threading.Tasks;
 
 namespace Military_Units
 {
-    class Personnel
-    { 
-        protected string name;
-        public string status { get; set; }
-
-
-        public Personnel()
+    class Infantry : Personnel
+    {
+        public Infantry()
         {
+            unitType = "Infantry";
+            health = 50;
+            attackPower = 3;
+            weapon = Weapons.Rifle;
+            status = "Alive";
 
+            attackPower += (int)weapon;
         }
 
-        public Personnel(string name, string status)
+        public override void attack()
         {
-            this.name = name;
-            this.status = status;
+            Console.WriteLine($"{unitType} fires their rifle and deals {attackPower}.");
         }
-
-        void die()
-        {
-            status = "dead";
-        }
-
-        public virtual void fire()
-        {
-
-        }
-
-
-        
-
-
-
     }
 
-    class Weapons
+    class Radioman : Personnel
     {
+        protected bool comm = true;
 
+        public Radioman()
+        {
+            unitType = "Radio Operator";
+            health = 45;
+            attackPower = 3;
+            weapon = Weapons.Pistol;
+            status = "Alive";
+
+            attackPower += (int)weapon;
+        }
+
+        public override void die()
+        {
+            base.die();
+            comm = false;
+        }
     }
 
-    class Missions
+    class Corpsman : Personnel
     {
+        public bool healing = true;
 
+        public Corpsman()
+        {
+            unitType = "Corpsman";
+            health = 40;
+            attackPower = 2;
+            weapon = Weapons.Rifle;
+            status = "Alive";
+
+            attackPower += (int)weapon;
+        }
+
+        public override void die()
+        {
+            base.die();
+            healing = false;
+        }
     }
 
-    class Vehicle
+    class Tank : Vehicle
     {
-
+        public Tank()
+        {
+            unitType = "Tank";
+            status = "Functioning";
+            health = 500;
+            attackPower = 35;
+        }
     }
 }

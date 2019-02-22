@@ -47,6 +47,116 @@ using System.Threading.Tasks;
 
 namespace Military_Units
 {
+    class DesertStorm : Missions
+    {
+        
+
+        public DesertStorm()
+        {
+            missionName = "Desert Storm";
+            soldiers = 50;
+            tanks = 5;
+            generateSoldiers();
+            generateTanks();
+        }
+
+        void generateSoldiers()
+        {
+            Infantry unit = new Infantry();
+            for (int i = 0; i < soldiers; i++)
+            {
+                AP += unit.attackPower;
+                HP += unit.health;
+            }
+
+        }
+
+        void generateTanks()
+        {
+            Tank unit1 = new Tank();
+            for (int i = 0; i < tanks; i++)
+            {
+                AP += unit1.attackPower;
+                HP += unit1.health;
+            }
+        }
+
+
+    }
+
+    class MyArmy
+    {
+        public int infantry = 200;
+        public int radioOperators = 10;
+        public int corpsman = 12;
+        public int tanks = 20;
+        public int ArmyPower;
+        public int ArmyHealth;
+
+        public MyArmy()
+        {
+            calculateArmyPower();
+        }
+
+        Infantry unit = new Infantry();
+        Radioman unit1 = new Radioman();
+        Corpsman unit2 = new Corpsman();
+        Tank unit3 = new Tank();
+
+        void calculateArmyPower()
+        {
+            //resets calculations
+            ArmyPower = 0;
+            ArmyHealth = 0;
+
+            for (int i = 0; i < infantry; i++)
+            {
+                ArmyPower += unit.attackPower;
+                ArmyHealth += unit.health;
+            }
+
+            for (int i = 0; i < radioOperators; i++)
+            {
+                ArmyPower += unit1.attackPower;
+                ArmyHealth += unit1.health;
+            }
+
+            for (int i = 0; i < corpsman; i++)
+            {
+                ArmyPower += unit2.attackPower;
+                ArmyHealth += unit2.health;
+            }
+
+            for (int i = 0; i < tanks; i++)
+            {
+                ArmyPower += unit3.attackPower;
+                ArmyHealth += unit3.health;
+            }
+        }
+
+        public virtual void CalculateUnits()
+        {
+            //TODO: make this method calculate the ammount of units left after a mission and before.
+            int temp = ArmyHealth;
+
+            int x = unit.health * infantry;
+            int x1 = unit1.health * radioOperators;
+            int x2 = unit2.health * corpsman;
+            int y = unit.health * tanks;
+
+            temp -= x;
+            if (unit2.healing == true)
+            {
+
+            }
+            
+            
+
+        }
+
+    }
+        
+
     class Start
     {
         static void Main(string[] args)
