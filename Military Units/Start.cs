@@ -103,7 +103,7 @@ namespace Military_Units
         Corpsman unit2 = new Corpsman();
         Tank unit3 = new Tank();
 
-        void calculateArmyPower()
+        public void calculateArmyPower()
         {
             //resets calculations
             ArmyPower = 0;
@@ -145,7 +145,9 @@ namespace Military_Units
             int y = unit.health * tanks;
 
             temp -= x;
-            if (unit2.healing == true)
+
+
+            if (unit2.health == 0)
             {
 
             }
@@ -161,7 +163,20 @@ namespace Military_Units
     {
         static void Main(string[] args)
         {
+            MyArmy Liet = new MyArmy();
+            ConductMission(Liet, DesertStorm);
 
         }
+
+        public static void ConductMission(MyArmy x, Missions y)
+        {
+            this.x.ArmyHealth - this.y.AP;
+            this.y.HP - this.x.ArmyPower;
+            //TODO: Right now this won't do anything since CalculateUnits isn't finished
+            x.CalculateUnits;
+            x.calculateArmyPower;
+
+        }
+
     }
 }
