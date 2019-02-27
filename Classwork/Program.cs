@@ -15,6 +15,8 @@ namespace Classwork
             string str = "This is a test";
             str = str.Replace(" ", String.Empty);
             Console.WriteLine(str);
+
+            
         }
 
         public static string Reverse(string input)

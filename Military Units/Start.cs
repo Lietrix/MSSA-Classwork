@@ -164,17 +164,18 @@ namespace Military_Units
         static void Main(string[] args)
         {
             MyArmy Liet = new MyArmy();
-            ConductMission(Liet, DesertStorm);
+            DesertStorm Hype = new DesertStorm();
+            ConductMission(Liet, Hype);
 
         }
 
         public static void ConductMission(MyArmy x, Missions y)
         {
-            this.x.ArmyHealth - this.y.AP;
-            this.y.HP - this.x.ArmyPower;
+            x.ArmyHealth -= y.AP;
+            y.HP -= x.ArmyPower;
             //TODO: Right now this won't do anything since CalculateUnits isn't finished
-            x.CalculateUnits;
-            x.calculateArmyPower;
+            x.CalculateUnits();
+            x.calculateArmyPower();
 
         }
 
