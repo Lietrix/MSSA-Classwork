@@ -10,13 +10,20 @@ namespace Roulette_Wheel
     {
         static void Main(string[] args)
         {
-           GameStart();     
+           string startName = getName();
+           double startMoney = getMoney();
+           Gambler player = new Gambler(startName, startMoney);
         }
 
-        public static void GameStart()
+        public static string getName()
         {
             Console.Write("Input your name: ");
             string startName = Console.ReadLine();
+            return startName;
+        } 
+
+        public static double getMoney()
+        {
             Console.WriteLine("How much money do you want to start with?");
             double startMoney = 0;
             while (true)
@@ -39,8 +46,7 @@ namespace Roulette_Wheel
                 }
 
             }
-            Gambler player = new Gambler(startName, startMoney);
-            player.BetEven();
+            return startMoney;
         }
     }
 }
