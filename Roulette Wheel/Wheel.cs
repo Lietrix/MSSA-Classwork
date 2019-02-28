@@ -8,18 +8,25 @@ using System.Threading.Tasks;
 
 namespace Roulette_Wheel
 {
-    enum WheelOrder
-    {
-        // The wheel order
-            G0, R32, B15, R19, B4, R21, B2, R25, B17, R34, B6, R27, B13, 
-            R36, B11, R30, B8, R23, B10, R5, B24, R16, B33, R1, B20, R14,
-            B31, R9, B22, R18, B29, R7, B28, R12, B35, R3, B26
-    };
+  //  enum WheelOrder
+  //  {
+  //      // The wheel order
+  //          G0, R32, B15, R19, B4, R21, B2, R25, B17, R34, B6, R27, B13, 
+  //          R36, B11, R30, B8, R23, B10, R5, B24, R16, B33, R1, B20, R14,
+  //          B31, R9, B22, R18, B29, R7, B28, R12, B35, R3, B26
+  //  };
 
     public class Wheel
     {
         public  KeyValuePair<int, string> Result { get => spin(); }
-        
+
+        static int[] WheelOrder = new int[]
+        {
+            0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13,
+            36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14,
+            31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26
+        };
+
         //      wheel bin
         public static Dictionary<int, string> bins = new Dictionary<int, string>()
         {
@@ -58,18 +65,32 @@ namespace Roulette_Wheel
             Console.WriteLine("Ball is spinning...");
             while (spinning == true)
             {
-                Console.Write($"\t{(WheelOrder)start}");
+                Console.Write($"\t{WheelOrder[start]}");
+                start++;
                 Thread.Sleep(speed);
                 ClearLine();
-                speed += 5;
-                start++;
+                if (speed < 200)
+                {
+                    speed += 5;
+                }
+                else if(speed < 300)
+                {
+                    speed += 8;
+                }
+                else
+                {
+                    speed += 10;
+                }
                 if(start > 36)
                 {
                     start = 0;
                 }
-                if(speed >= 350)
+                if(speed >= 400)
                 {
-                    tempResult = bins.ElementAt(start);
+                    Console.Write($"\t{WheelOrder[start]}");
+                    Thread.Sleep(1000);
+                    ClearLine();
+                    tempResult = bins.ElementAt(WheelOrder[start]);
                     Console.WriteLine($"\n\tThe ball lands on {tempResult}.");
                     spinning = false;
                 }

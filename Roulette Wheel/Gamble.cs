@@ -19,7 +19,7 @@ namespace Roulette_Wheel
 
         public void ShowInfo()
         {
-            Console.WriteLine($"Name : {Name}\nMoney : ${money}");
+            Console.WriteLine($"\nMoney : ${money}");
         }
     }
 
@@ -28,22 +28,22 @@ namespace Roulette_Wheel
         public double money = 0;
         Wheel myWheel = new Wheel();
 
-        public static Dictionary<int, string> bins = new Dictionary<int, string>()
-        {
-            {0,"Green"},
-            {1,"Red"},{2,"Black"},{3,"Red"},
-            {4,"Red"},{5,"Black"},{6,"Black"},
-            {7,"Red"},{8,"Black"},{9,"Black"},
-            {10,"Black"},{11,"Red"},{12,"Black"},
-            {13,"Black"},{14,"Red"},{15,"Black"},
-            {16,"Red"},{17,"Red"},{18,"Red"},
-            {19,"Red"},{20,"Red"},{21,"Black"},
-            {22,"Black"},{23,"Black"},{24,"Black"},
-            {25,"Black"},{26,"Red"},{27,"Red"},
-            {28,"Red"},{29,"Red"},{30,"Black"},
-            {31,"Black"},{32,"Black"},{33,"Red"},
-            {34,"Red"},{35,"Red"},{36,"Black"}
-        };
+       // public static Dictionary<int, string> bins = new Dictionary<int, string>()
+       // {
+       //     {0,"Green"},
+       //     {1,"Red"},{2,"Black"},{3,"Red"},
+       //     {4,"Red"},{5,"Black"},{6,"Black"},
+       //     {7,"Red"},{8,"Black"},{9,"Black"},
+       //     {10,"Black"},{11,"Red"},{12,"Black"},
+       //     {13,"Black"},{14,"Red"},{15,"Black"},
+       //     {16,"Red"},{17,"Red"},{18,"Red"},
+       //     {19,"Red"},{20,"Red"},{21,"Black"},
+       //     {22,"Black"},{23,"Black"},{24,"Black"},
+       //     {25,"Black"},{26,"Red"},{27,"Red"},
+       //     {28,"Red"},{29,"Red"},{30,"Black"},
+       //     {31,"Black"},{32,"Black"},{33,"Red"},
+       //     {34,"Red"},{35,"Red"},{36,"Black"}
+       // };
 
         private int[,] table = new int[3, 12]
         {
@@ -51,6 +51,11 @@ namespace Roulette_Wheel
             {2,5,8,11,14,17,20,23,26,29,32,35},
             {1,4,7,10,13,16,19,22,25,28,31,34}
         };
+
+        public void BetOnCorner(int num, string corner, double amount)
+        {
+
+        }
 
         public void BetOnNumber(int num, double amount)
         {
@@ -124,18 +129,121 @@ namespace Roulette_Wheel
 
         public void BetOnRow(int row, double amount)
         {
-            int temp = myWheel.Result.Key
-            for (int i = 0; i < length; i++)
+            int temp = myWheel.Result.Key;
+
+            if(temp % 3 == 0)
             {
-                if (table[i, row] == myWheel.Result.Key
+                if(row == 0)
                 {
-                    break;
-                } 
+                    amount *= 2;
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
             }
-            
+            else if(temp % 3 == 1)
+            {
+                if (row == 1)
+                {
+                    amount *= 2;
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
+            else if(temp % 3 == 2)
+            {
+                if (row == 2)
+                {
+                    amount *= 2;
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
         }
 
+        public void BetHighOrLow(string HL, double amount)
+        {
+            int temp = myWheel.Result.Key;
+            if(temp >= 18)
+            {
+                if(HL == "High")
+                {
+                    money += amount;
+                }
+                else
+                {
+                    money -= amount;
+                }
+            }
+            else if(temp == 0)
+            {
+                money -= amount;
+            }
+            else
+            {
+                if(HL == "Low")
+                {
+                    money += amount;
+                }
+                else
+                {
+                    money -= amount;
+                }
+            }
+        }
 
+        public void BetOnDozen(int dozen, double amount)
+        {
+            int temp = myWheel.Result.Key;
+            if(temp == 0)
+            {
+                this.money -= amount;
+            }
+            else  if(temp >=13 && temp <= 24)
+            {
+                if(dozen == 2)
+                {
+                    amount *= 2;
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
+            else if (temp <= 12)
+            {
+                if (dozen == 1)
+                {
+                    amount *= 2;
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
+            else if (temp >= 25)
+            {
+                if (dozen == 3)
+                {
+                    amount *= 2;
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
+        }
     }
 
 

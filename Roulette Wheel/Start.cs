@@ -13,8 +13,15 @@ namespace Roulette_Wheel
            string startName = getName();
            double startMoney = getMoney();
            Gambler player = new Gambler(startName, startMoney);
-           player.BetOnEven(50);
-           player.ShowInfo();
+           while (player.money > 0)
+            {
+                player.BetOnEven(500);
+                player.ShowInfo();
+                if (player.money <= 0)
+                {
+                    Console.WriteLine("You have run out of money, better luck next time!");
+                }
+            }
         }
 
         public static string getName()
