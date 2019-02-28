@@ -13,27 +13,22 @@ namespace Roulette_Wheel
            string startName = getName();
            double startMoney = getMoney();
            Gambler player = new Gambler(startName, startMoney);
-           while (player.money > 0)
-            {
-                player.BetOnEven(500);
-                player.ShowInfo();
-                if (player.money <= 0)
-                {
-                    Console.WriteLine("You have run out of money, better luck next time!");
-                }
-            }
+
+                player.MainMenu();
+
+
         }
 
         public static string getName()
         {
-            Console.Write("Input your name: ");
+            Console.Write("What is your name gambler?\n\n\t");
             string startName = Console.ReadLine();
             return startName;
         } 
 
         public static double getMoney()
         {
-            Console.WriteLine("How much money do you want to start with?");
+            Console.WriteLine("How much money do you have?\n");
             double startMoney = 0;
             while (true)
             {
@@ -57,5 +52,7 @@ namespace Roulette_Wheel
             }
             return startMoney;
         }
+
+
     }
 }

@@ -18,7 +18,7 @@ namespace Roulette_Wheel
 
     public class Wheel
     {
-        public  KeyValuePair<int, string> Result { get => spin(); }
+        public static KeyValuePair<int, string> Result { get => spin(); }
 
         static int[] WheelOrder = new int[]
         {
@@ -62,7 +62,7 @@ namespace Roulette_Wheel
 
             //The lower the speed, the faster the spin.
             int speed = rand.Next(12, 30);
-            Console.WriteLine("Ball is spinning...");
+            Console.WriteLine("\tBall is spinning...");
             while (spinning == true)
             {
                 Console.Write($"\t{WheelOrder[start]}");
