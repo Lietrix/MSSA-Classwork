@@ -45,11 +45,18 @@ namespace Roulette_Wheel
             {34,"Red"},{35,"Red"},{36,"Black"}
         };
 
+        private int[,] table = new int[3, 12]
+        {
+            {3,6,9,12,15,18,21,24,27,30,33,36},
+            {2,5,8,11,14,17,20,23,26,29,32,35},
+            {1,4,7,10,13,16,19,22,25,28,31,34}
+        };
+
         public void BetOnNumber(int num, double amount)
         {
             if(myWheel.Result.Key == num)
             {
-                amount *= 35;
+                amount *= 34;
                 this.money += amount;
             }
             else
@@ -60,13 +67,13 @@ namespace Roulette_Wheel
 
         public void BetOnEven(double amount)
         {
-            if(myWheel.Result.Key == 0)
+            int temp = myWheel.Result.Key;
+            if(temp == 0)
             {
                 this.money -= amount;
             }
-            else if(myWheel.Result.Key % 2 == 0)
+            else if(temp % 2 == 0)
             {
-                amount *= 2;
                 this.money += amount;
             }
             else
@@ -79,7 +86,6 @@ namespace Roulette_Wheel
         { 
             if (myWheel.Result.Key % 2 == 1)
             {
-                amount *= 2;
                 this.money += amount;
             }
             else
@@ -88,11 +94,48 @@ namespace Roulette_Wheel
             }
         }
 
-        private int[,] table = new int[,]
-        { {3,6,9,12,15,18,21,24,27,30,33,36},
-         {2,5,8,11,14,17,20,23,26,29,32,35},
-         {1,4,7,10,13,16,19,22,25,28,31,34}
-        };
+        public void BetOnColor(string color, double amount)
+        {
+            string result = myWheel.Result.Value;
+            if (color == "Green")
+            {
+                if (result == color)
+                {
+                    amount *= 34;
+                    color += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
+            else
+            {
+                if (result == color)
+                {
+                    this.money += amount;
+                }
+                else
+                {
+                    this.money -= amount;
+                }
+            }
+        }
+
+        public void BetOnRow(int row, double amount)
+        {
+            int temp = myWheel.Result.Key
+            for (int i = 0; i < length; i++)
+            {
+                if (table[i, row] == myWheel.Result.Key
+                {
+                    break;
+                } 
+            }
+            
+        }
+
+
     }
 
 

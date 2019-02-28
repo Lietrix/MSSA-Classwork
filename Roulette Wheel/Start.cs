@@ -13,6 +13,8 @@ namespace Roulette_Wheel
            string startName = getName();
            double startMoney = getMoney();
            Gambler player = new Gambler(startName, startMoney);
+           player.BetOnEven(50);
+           player.ShowInfo();
         }
 
         public static string getName()
