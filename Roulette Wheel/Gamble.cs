@@ -22,21 +22,17 @@ namespace Roulette_Wheel
 
         public void ShowInfo()
         {
-            Console.WriteLine($"Name : {Name}\nMoney : ${money}");
+            TypedWords($"Name : {Name}\nMoney : ${money}\n");
+            Thread.Sleep(1200);
         }
 
         public void MainMenu()
         {
             if(this.money <= 0)
             {
-                Console.WriteLine("You have run out of money, better luck next time...");
-                Thread.Sleep(1200);
-                foreach(var x in Name)
-                {
-                    Thread.Sleep(120);
-                    Console.Write("\t" + x);
-                }
+                TypedWords("You have run out of money, better luck next time...");              
                 Thread.Sleep(1500);
+                TypedWords(Name);
                 Console.WriteLine("\n\t\t\tYou suck");
                 Thread.Sleep(500);
                 Environment.Exit(0);
@@ -283,7 +279,7 @@ namespace Roulette_Wheel
             catch (InvalidOperationException IO)
             {
                 Console.WriteLine(IO.Message);
-                MainMenu();
+                MainMenu(); 
             }
             catch(Exception E)
             {
@@ -676,6 +672,15 @@ namespace Roulette_Wheel
                 Console.WriteLine("\n\t\tSorry you lost, better luck next time! Make a new bet\n");
                 Console.WriteLine($"You now have: ${money}");
                 Thread.Sleep(1500);
+            }
+        }
+
+        public static void TypedWords(string sentence)
+        {
+            foreach (char ch in sentence)
+            {
+                Thread.Sleep(110);
+                Console.Write(ch);
             }
         }
 

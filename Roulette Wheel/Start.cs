@@ -21,14 +21,13 @@ namespace Roulette_Wheel
 
         public static string getName()
         {
-            Console.Write("What is your name gambler?\n\n\t");
-            string startName = Console.ReadLine();
-            return startName;
+            Gamble.TypedWords("What is your name gambler?\n\n\t");
+            return Console.ReadLine();
         } 
 
         public static double getMoney()
         {
-            Console.WriteLine("How much money do you have?\n");
+            Gamble.TypedWords("How much money do you have?\n");
             double startMoney = 0;
             while (true)
             {
