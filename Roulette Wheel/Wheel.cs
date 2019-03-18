@@ -63,7 +63,7 @@ namespace Roulette_Wheel
             //The lower the speed, the faster the spin.
             int speed = rand.Next(12, 30);
             Console.WriteLine("\tBall is spinning...");
-            while (spinning == true)
+            while (spinning)
             {
                 Console.Write($"\t{WheelOrder[start]}");
                 start++;

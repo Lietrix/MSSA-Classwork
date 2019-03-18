@@ -11,6 +11,9 @@ namespace Roulette_Wheel
     class Gambler : Gamble
     {
         private string Name;
+        private double betAmount = 0;
+        private string opt;
+        
 
         public Gambler(string Name, double money)
         {
@@ -30,11 +33,11 @@ namespace Roulette_Wheel
         {
             if(this.money <= 0)
             {
-                TypedWords("You have run out of money, better luck next time...");              
+                TypedWords("\n\t\t\tYou have run out of money, better luck next time...");              
                 Thread.Sleep(1500);
                 TypedWords(Name);
-                Console.WriteLine("\n\t\t\tYou suck");
-                Thread.Sleep(500);
+                TypedWords("\n\t\t\t\t\t\tY O U   S U C K");
+                Thread.Sleep(1500);
                 Environment.Exit(0);
             }
             Console.WriteLine("\n\tDecide what you would like to bet on:"
@@ -43,30 +46,30 @@ namespace Roulette_Wheel
             try
             {
                 Console.WriteLine("Type a number: ");
-                string opt = Console.ReadLine();
+                opt = Console.ReadLine();
                 switch (opt)
                 {
                     case "1":
                         Console.WriteLine("\n1. Red\n2. Black\n3. Green\n4. Exit");
-                        string opt1 = Console.ReadLine();
-                        switch (opt1)
+                        opt = Console.ReadLine();
+                        switch (opt)
                         {
                             case "1":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount = double.Parse(Console.ReadLine());
+                                betAmount = check(double.Parse(Console.ReadLine()));
                                 WinOrLose(BetOnColor("Red", betAmount));
                                 MainMenu();
                                 break;
                             case "2":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount1 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnColor("Black", betAmount1));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnColor("Black", betAmount));
                                 MainMenu();
                                 break;
                             case "3":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount2 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnColor("Green", betAmount2));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnColor("Green", betAmount));
                                 MainMenu();
                                 break;
                             case "4":
@@ -78,31 +81,31 @@ namespace Roulette_Wheel
                         break;
                     case "2":
                         Console.WriteLine("\nAmount: ");
-                        double betAmount3 = double.Parse(Console.ReadLine());
-                        WinOrLose(BetOnOdd(betAmount3));
+                        betAmount = check(double.Parse(Console.ReadLine()));
+                        WinOrLose(BetOnOdd(betAmount));
                         MainMenu();
                         break;
                     case "3":
                         Console.WriteLine("\nAmount: ");
-                        double betAmount4 = double.Parse(Console.ReadLine());
-                        WinOrLose(BetOnEven(betAmount4));
+                        betAmount = check(double.Parse(Console.ReadLine()));
+                        WinOrLose(BetOnEven(betAmount));
                         MainMenu();
                         break;
                     case "4":
                         Console.WriteLine("\n1. High (19-36)\n2. Low (1-18)\n3. Exit");
-                        string opt2 = Console.ReadLine();
-                        switch (opt2)
+                        opt = Console.ReadLine();
+                        switch (opt)
                         {
                             case "1":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount5 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetHighOrLow("High", betAmount5));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetHighOrLow("High", betAmount));
                                 MainMenu();
                                 break;
                             case "2":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount6 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetHighOrLow("Low", betAmount6));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetHighOrLow("Low", betAmount));
                                 MainMenu();
                                 break;
                             case "3":
@@ -121,8 +124,8 @@ namespace Roulette_Wheel
                             throw new InvalidOperationException();
                         }
                         Console.WriteLine("\nAmount: ");
-                        double betAmount7 = double.Parse(Console.ReadLine());
-                        WinOrLose(BetOnColumn(col, betAmount7));
+                        betAmount = check(double.Parse(Console.ReadLine()));
+                        WinOrLose(BetOnColumn(col, betAmount));
                         MainMenu();
                         break;
                     case "6":
@@ -134,8 +137,8 @@ namespace Roulette_Wheel
                             throw new InvalidOperationException();
                         }
                         Console.WriteLine("\nAmount: ");
-                        double betAmount8 = double.Parse(Console.ReadLine());
-                        WinOrLose(BetOnRow(row, betAmount8));
+                        betAmount = check(double.Parse(Console.ReadLine()));
+                        WinOrLose(BetOnRow(row, betAmount));
                         MainMenu();
                         break;
                     case "7":
@@ -145,8 +148,8 @@ namespace Roulette_Wheel
                         {
                             throw new InvalidOperationException();
                         }
-                        double betAmount9 = double.Parse(Console.ReadLine());
-                        WinOrLose(BetOnNumber(num, betAmount9));
+                        betAmount = check(double.Parse(Console.ReadLine()));
+                        WinOrLose(BetOnNumber(num, betAmount));
                         MainMenu();
                         break;
                     case "8":
@@ -157,31 +160,31 @@ namespace Roulette_Wheel
                             throw new InvalidOperationException();
                         }
                         Console.WriteLine("Which corner would you like to bet on?\n1. Top Left\n2. Top Right\n3. Bottom Left\n4. Bottom Right\n5. Exit\n");
-                        string opt3 = Console.ReadLine();
-                        switch (opt3)
+                        opt = Console.ReadLine();
+                        switch (opt)
                         {
                             case "1":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount10 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnCorner(num1 ,"TopLeft", betAmount10));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnCorner(num1 ,"TopLeft", betAmount));
                                 MainMenu();
                                 break;
                             case "2":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount11 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnCorner(num1, "TopRight", betAmount11));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnCorner(num1, "TopRight", betAmount));
                                 MainMenu();
                                 break;
                             case "3":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount12 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnCorner(num1, "BottomLeft", betAmount12));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnCorner(num1, "BottomLeft", betAmount));
                                 MainMenu();
                                 break;
                             case "4":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount13 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnCorner(num1, "TopRight", betAmount13));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnCorner(num1, "TopRight", betAmount));
                                 MainMenu();
                                 break;
                             case "5":
@@ -201,31 +204,31 @@ namespace Roulette_Wheel
                             throw new InvalidOperationException();
                         }
                         Console.WriteLine("Which direction would you like to split?\n1. Up\n2. Down\n3. Right\n4. Left\n5. Exit\n");
-                        string opt4 = Console.ReadLine();
-                        switch (opt4)
+                        opt = Console.ReadLine();
+                        switch (opt)
                         {
                             case "1":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount14 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnSplit(num2, "Up", betAmount14));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnSplit(num2, "Up", betAmount));
                                 MainMenu();
                                 break;
                             case "2":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount15 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnSplit(num2, "Down", betAmount15));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnSplit(num2, "Down", betAmount));
                                 MainMenu();
                                 break;
                             case "3":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount16 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnSplit(num2, "Right", betAmount16));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnSplit(num2, "Right", betAmount));
                                 MainMenu();
                                 break;
                             case "4":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount17 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnSplit(num2, "Left", betAmount17));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnSplit(num2, "Left", betAmount));
                                 MainMenu();
                                 break;
                             case "5":
@@ -237,25 +240,25 @@ namespace Roulette_Wheel
                         break;
                     case "10":
                         Console.WriteLine("\nChoose a dozen to bet on.\n1. 1-12\n2. 13-24\n3. 25-36\n4. Exit\n");
-                        string opt5 = Console.ReadLine();
-                        switch (opt5)
+                        opt = Console.ReadLine();
+                        switch (opt)
                         {
                             case "1":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount18 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnDozen(1, betAmount18));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnDozen(1, betAmount));
                                 MainMenu();
                                 break;
                             case "2":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount19 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnDozen(2, betAmount19));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnDozen(2, betAmount));
                                 MainMenu();
                                 break;
                             case "3":
                                 Console.WriteLine("\nAmount: ");
-                                double betAmount20 = double.Parse(Console.ReadLine());
-                                WinOrLose(BetOnDozen(3, betAmount20));
+                                betAmount = check(double.Parse(Console.ReadLine()));
+                                WinOrLose(BetOnDozen(3, betAmount));
                                 MainMenu();
                                 break;
                             case "4":
@@ -276,22 +279,38 @@ namespace Roulette_Wheel
                         throw new InvalidOperationException();
                 }
             }
-            catch (InvalidOperationException IO)
+            catch (InvalidOperationException)
             {
-                Console.WriteLine(IO.Message);
-                MainMenu(); 
+                Console.WriteLine("That was an invalid option, returning to main menu...\n");
+                Thread.Sleep(1500);
             }
             catch(Exception E)
             {
-                Console.WriteLine(E.Message);
+                Console.WriteLine(E.Message + "\n");
+                Thread.Sleep(1500);
+            }
+            finally
+            {
                 MainMenu();
+            }
+        }
+
+        public double check(double num)
+        {
+            if (num > money)
+            {
+                throw new Exception("You do not have the much money, returning to main menu");
+            }
+            else
+            {
+                return num;
             }
         }
     }
 
     class Gamble : Wheel
     {
-        public double money = 0; 
+        public double money = 0;
 
         private int[,] table = new int[3, 12]
         {
@@ -680,9 +699,13 @@ namespace Roulette_Wheel
             foreach (char ch in sentence)
             {
                 Thread.Sleep(110);
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write(ch);
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
+
+
 
 
     }
