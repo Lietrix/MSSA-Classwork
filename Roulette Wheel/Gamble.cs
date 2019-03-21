@@ -36,7 +36,7 @@ namespace Roulette_Wheel
                 TypedWords("\n\t\t\tYou have run out of money, better luck next time...");              
                 Thread.Sleep(1500);
                 TypedWords(Name);
-                TypedWords("\n\t\t\t\t\t\tY O U   S U C K");
+                TypedWords("\n\t\t\t\t\t\tGood Bye");
                 Thread.Sleep(1500);
                 Environment.Exit(0);
             }
