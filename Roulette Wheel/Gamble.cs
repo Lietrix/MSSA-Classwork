@@ -142,12 +142,13 @@ namespace Roulette_Wheel
                         MainMenu();
                         break;
                     case "7":
-                        Console.WriteLine("/nWhat number do you want to bet on?\n");
+                        Console.WriteLine("\nWhat number do you want to bet on?");
                         int num = Int32.Parse(Console.ReadLine());
                         if(num >= 37 || num <= 0)
                         {
                             throw new InvalidOperationException();
                         }
+                        Console.WriteLine("\nAmount: ");
                         betAmount = check(double.Parse(Console.ReadLine()));
                         WinOrLose(BetOnNumber(num, betAmount));
                         MainMenu();
@@ -462,18 +463,15 @@ namespace Roulette_Wheel
         }
 
         public bool BetOnNumber(int num, double amount)
-           {
-               if(Result.Key == num)
-               {
-                   this.money += amount * 34;
+        {
+            if (Result.Key == num)
+            {
+                this.money += amount * 34;
                 return true;
-               }
-               else
-               {
-                   this.money -= amount;
-               }
+            }
+            this.money -= amount;
             return false;
-           }
+        }
 
         public bool BetOnEven(double amount)
         {
