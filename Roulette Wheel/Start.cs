@@ -10,13 +10,11 @@ namespace Roulette_Wheel
     {
         static void Main(string[] args)
         {
+            //initiates the game
            string startName = getName();
            double startMoney = getMoney();
            Gambler player = new Gambler(startName, startMoney);
-
-                player.MainMenu();
-
-
+           player.MainMenu();
         }
 
         public static string getName()
@@ -47,7 +45,6 @@ namespace Roulette_Wheel
                 {
                     Console.WriteLine("\nThat was not a valid number, please type a valid number");
                 }
-
             }
             return startMoney;
         }

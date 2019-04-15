@@ -10,11 +10,12 @@ namespace Classwork
     {
         static void Main(string[] args)
         {
-          //  Console.WriteLine(Reverse("happy"));
-          //
-          //  string str = "This is a test";
-          //  str = str.Replace(" ", String.Empty);
-          //  Console.WriteLine(str);         
+            //  Console.WriteLine(Reverse("happy"));
+            //
+            //  string str = "This is a test";
+            //  str = str.Replace(" ", String.Empty);
+            //  Console.WriteLine(str);   
+            Console.WriteLine(Bowling.check(136));
         }
 
         public static string Reverse(string input)

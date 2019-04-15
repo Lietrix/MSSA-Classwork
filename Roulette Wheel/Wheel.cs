@@ -51,7 +51,7 @@ namespace Roulette_Wheel
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, Console.CursorTop - 1);
         }
-
+        //     Makes the ball spin and land on a random number
         static KeyValuePair<int, string> spin()
         {
             Random rand = new Random();

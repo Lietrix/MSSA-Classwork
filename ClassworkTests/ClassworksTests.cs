@@ -16,5 +16,15 @@ namespace Classwork.Tests
         {
             Assert.AreEqual("boj" ,Classworks.Reverse("job"));
         }
+
+        [TestMethod]
+        public void CheckPattern()
+        {
+            Assert.AreEqual(true, Bowling.check(136));
+            Assert.AreEqual(true, Bowling.check(1));
+            Assert.AreEqual(false, Bowling.check(4));
+            Assert.AreEqual(false, Bowling.check(517351397));
+            Assert.AreEqual(true, Bowling.check(21));
+        }
     }
 }

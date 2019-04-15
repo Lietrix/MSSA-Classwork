@@ -22,13 +22,13 @@ namespace Roulette_Wheel
             Console.WriteLine($"\n\tWelcome new Player {Name}!\n\tYou are starting out with ${money}" +
                 $"\n\n\t\tGood Luck!\n");
         }
-
+        // shows the player's current money and name
         public void ShowInfo()
         {
             TypedWords($"Name : {Name}\nMoney : ${money}\n");
             Thread.Sleep(1200);
         }
-
+        //Main Menu is recursive and will exit the application when user runs out of money or chooses to exit.
         public void MainMenu()
         {
             if(this.money <= 0)
@@ -295,7 +295,7 @@ namespace Roulette_Wheel
                 MainMenu();
             }
         }
-
+        //checks to see if a player has sufficient money to make the bet
         public double check(double num)
         {
             if (num > money)
@@ -312,14 +312,14 @@ namespace Roulette_Wheel
     class Gamble : Wheel
     {
         public double money = 0;
-
+        
         private int[,] table = new int[3, 12]
         {
             {3,6,9,12,15,18,21,24,27,30,33,36},
             {2,5,8,11,14,17,20,23,26,29,32,35},
             {1,4,7,10,13,16,19,22,25,28,31,34}
         };
-
+        //The different types of bets a player can make
         public bool BetOnCorner(int num, string corner, double amount)
         {
             int temp = Result.Key;
