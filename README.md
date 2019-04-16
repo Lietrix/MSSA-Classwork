@@ -10,3 +10,14 @@ To run these
 2. Open visual studios
 3. Open Solution
 4. Rightclick a project and set as start up project
+
+
+#Projects in this repository
+
+[Roulette Wheel](Roulette%20Wheel)
+
+[Monte Carlo method for finding Pi](MonteCarlo)
+
+[Military Units, Object's using inheritance](Military%20Units)
+
+[FileIO, file reading](FileIO)
